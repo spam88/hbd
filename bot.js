@@ -1,14 +1,31 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 const client = new Discord.Client();
-console.log("Hassan_Gamer");
-
-
-client.on("ready", () => {
-let channel =     client.channels.get("515310203357495326")
-setInterval(function() {
-channel.send(`========`)
-}, 25)
+var prefix = "1";
+client.on("message", message => {
+            if (message.content.startsWith(prefix + "bc")) {
+                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+ m.send(`${argresult}\n ${m}`);
 })
- 
- 
-client.login("NTE0OTAxMTg0NjIwOTIwODU0.DtdTjw.6C-A1FcO1FM9dQdiAKBOztGT_Nw");
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
+ message.delete(); 
+};     
+});
+
+
+client.on('ready', () => {
+   console.log(`----------------`);
+      console.log(`Desert Bot- Script By : i1Suhaib`);
+        console.log(`----------------`);
+      console.log(`ON ${client.guilds.size} Servers '     Script By : i1Suhaib ' `);
+    console.log(`----------------`);
+  console.log(`Logged in as ${client.user.tag}!`);
+client.user.setGame(`1bc |  ƳΦЦʂęբ`,"http://twitch.tv/S-F")
+client.user.setStatus("dnd")
+});
+
+
+
+client.login("NTIwNjY3NDEyMzc5NTk4ODcw.DwjtLA.MV3NOVWbIsTAWfAP8bALz328gt4");
